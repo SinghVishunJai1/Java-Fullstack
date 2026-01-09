@@ -16,12 +16,11 @@ class TestStatic {
 
  public
   void nonStaticMethod() {
-    TestStatic t = new TestStatic();
     System.out.println();
     System.out.println("Welcome to non static Test Method");
 
     System.out.println("Static variable is :" + staticVar);
-    System.out.println("Non Static variable is :" + t.nonStaticVar);
+    System.out.println("Non Static variable is :" + nonStaticVar);
   }
 
  public
