@@ -1,0 +1,281 @@
+/* ==========================================================================
+   MASTER CSS REFERENCE GUIDE
+   Author: Jai Vishun Singh
+   Topic: From Basics to Advanced Layouts & Scopes
+   ========================================================================== */
+
+/* 1. TYPES OF CSS DECLARATION
+   ------------------------------------------
+   1. Inline: HTML tag ke andar style="" attribute (Sabse zyada priority).
+   2. Internal: HTML file ke <head> mein <style> tag ke andar.
+   3. External: Alag .css file (jaise ye hai) aur <link> tag se connect karna.
+*/
+
+/* 2. UNIVERSAL SELECTOR (*) & RESET
+   ------------------------------------------
+   Ye poore page ki default settings ko reset karta hai takki layout sahi dikhe.
+*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Border aur padding ko width ke andar hi rakhta hai */
+}
+
+/* 3. BLOCK VS INLINE ELEMENTS (Reference Names)
+   ------------------------------------------
+   BLOCK-LEVEL ELEMENTS: Naya line shuru karte hain aur poori width lete hain.
+   Names: <div>, <h1>-<h6>, <p>, <ul>, <ol>, <li>, <header>, <footer>, <section>, <form>, <table>, <hr>
+
+   INLINE ELEMENTS: Naya line shuru nahi karte, sirf content jitni jagah lete hain.
+   Names: <span>, <a>, <img>, <strong>, <em>, <button>, <input>, <label>, <code>, <small>
+*/
+
+/* 4. BASIC SELECTORS & SPECIFICITY (Priority Rules)
+   ------------------------------------------
+   Priority Order: ID (#) > Class (.) > Element (p, div)
+*/
+body { 
+    font-family: 'Poppins', Arial, sans-serif; 
+    background-color: #f4f4f4; 
+} /* Element Selector */
+
+.text-center { text-align: center; } /* Class Selector */
+
+#main-header { 
+    background-color: #333; 
+    color: white; 
+} /* ID Selector */
+
+/* 5. CSS SCOPES (Global vs Block/Local)
+   ------------------------------------------
+*/
+
+/* GLOBAL SCOPE: :root mein define kiye variables poori site mein kahin bhi use honge */
+:root {
+    --primary-color: #3498db;  /* Blue shade */
+    --secondary-color: #2ecc71; /* Green shade */
+    --font-main: 'Poppins', sans-serif;
+}
+
+/* BLOCK SCOPE (Local): Variable sirf isi selector block aur iske children mein kaam karega */
+.hero-section {
+    --local-bg: rgba(0, 0, 0, 0.8); 
+    color: #ffffff;
+    background-color: var(--local-bg);
+    background-image: url('image.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 50px;
+}
+
+/* 6. THE BOX MODEL
+   ------------------------------------------
+*/
+
+.content-box {
+    width: 300px;
+    height: 200px;
+    padding: 20px;   /* Andar ki jagah (Content aur border ke beech) */
+    border: 2px solid #333; /* Dabba ki deewar */
+    margin: 30px;    /* Bahar ki jagah (Do boxes ke beech ki doori) */
+}
+
+/* 7. TEXT STYLING (Typography)
+   ------------------------------------------
+*/
+.main-title {
+    font-size: 32px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: underline;
+    letter-spacing: 2px;
+    line-height: 1.5;
+}
+
+/* 8. DISPLAY & POSITIONING
+   ------------------------------------------
+*/
+.container {
+    display: block; /* default | inline | inline-block | none */
+}
+
+.sticky-header {
+    position: sticky; /* static | relative | absolute | fixed | sticky */
+    top: 0;
+    z-index: 100; /* Layering (Kaunsa element upar dikhega) */
+}
+
+/* 9. FLEXBOX (Modern 1D Layout)
+   ------------------------------------------
+*/
+
+.flex-parent {
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-between; /* Horizontal alignment */
+    align-items: center;            /* Vertical alignment */
+    gap: 20px;                      /* Bachon ke beech ka gap */
+    flex-wrap: wrap;                /* Choti screen par niche shift hona */
+}
+
+/* 10. CSS GRID (2D Layout)
+   ------------------------------------------
+*/
+
+.grid-parent {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 barabar columns */
+    gap: 15px;
+}
+
+/* 11. TRANSITIONS & ANIMATIONS
+   ------------------------------------------
+*/
+.button {
+    background-color: blue;
+    transition: 0.3s ease; /* Smooth effect ke liye */
+}
+
+.button:hover {
+    background-color: darkblue;
+    transform: scale(1.1); /* Hover par thoda bada hona */
+    cursor: pointer;
+}
+
+
+@keyframes slideIn {
+    from { margin-left: -100%; }
+    to { margin-left: 0%; }
+}
+
+.animated-box {
+    animation: slideIn 1s ease-in;
+}
+
+/* 12. RESPONSIVE DESIGN (Media Queries)
+   ------------------------------------------
+*/
+@media (max-width: 768px) {
+    .grid-parent {
+        grid-template-columns: 1fr; /* Mobile par 1 column kar do */
+    }
+    .main-title {
+        font-size: 24px;
+    }
+}
+
+/* 13. PSEUDO-CLASSES & ELEMENTS
+   ------------------------------------------
+*/
+.card:hover { border-color: var(--secondary-color); }
+.btn:active { transform: translateY(2px); } /* Click karte waqt niche dabna */
+li:nth-child(even) { background-color: #f2f2f2; } /* Sirf 2, 4, 6 items */
+
+.title::after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 3px;
+    background: red; /* Title ke niche chhoti line */
+}
+
+/* 14. SHADOWS & FILTERS
+   ------------------------------------------
+*/
+.card { box-shadow: 10px 10px 20px rgba(0,0,0,0.1); }
+.profile-pic {
+    width: 200px;
+    object-fit: cover; /* Image ko dabba mein fit rakhta hai */
+    filter: grayscale(100%);
+}
+
+/* 15. OTHERS (Overflow, Cursor, Forms)
+   ------------------------------------------
+*/
+.scroll-box { overflow: auto; } /* Content zyada ho toh scroll bar aayegi */
+.custom-pointer { cursor: pointer; } 
+input:focus {
+    outline: 2px solid var(--primary-color);
+    background-color: #fffbe6;
+}
+
+
+
+
+
+/* ==========================================
+    ADVANCED CSS ANIMATIONS
+   ========================================== */
+
+/* Animation banane ke 2 steps hote hain:
+   1. @keyframes se animation ka behavior define karna.
+   2. Element par 'animation' property apply karna.
+*/
+
+/* Step 1: Keyframes define karna (Animation kya karega) */
+@keyframes my-animation {
+    0% {
+        transform: translateX(0); /* Shuruat mein */
+        background-color: blue;
+    }
+    50% {
+        transform: translateX(200px) rotate(180deg); /* Beech mein */
+        background-color: red;
+        border-radius: 50%; /* Circle ban jayega */
+    }
+    100% {
+        transform: translateX(0); /* Wapas apni jagah par */
+        background-color: blue;
+    }
+}
+
+/* Step 2: Element par apply karna */
+.animated-box {
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+    margin: 50px;
+
+    /* Animation Properties: */
+    animation-name: my-animation;      /* Kaunsa keyframe use karna hai */
+    animation-duration: 4s;            /* Kitni der tak chalega (s = seconds) */
+    animation-timing-function: ease;   /* Speed curve: linear, ease-in, ease-out, cubic-bezier */
+    animation-delay: 1s;               /* Kitni der baad shuru hoga */
+    animation-iteration-count: infinite; /* Kitni baar chalega: 1, 5, infinite */
+    animation-direction: alternate;    /* Kaise chalega: normal, reverse, alternate */
+    animation-fill-mode: forwards;     /* Khatam hone par element kahan rukega */
+}
+
+/* SHORT HAND (Sab kuch ek line mein):
+   animation: [name] [duration] [timing] [delay] [count] [direction];
+*/
+.box-shorthand {
+    animation: my-animation 3s linear 0s infinite reverse;
+}
+
+/* ==========================================
+   TRANSFORM (Animation ke saath sabse zyada use hota hai)
+   ========================================== */
+
+
+.transform-demo {
+    transition: 0.5s;
+}
+
+.transform-demo:hover {
+    transform: translate(20px, 10px); /* Position hilane ke liye (x, y) */
+    transform: rotate(45deg);        /* Ghumane ke liye */
+    transform: scale(1.5);           /* Bada ya chota karne ke liye */
+    transform: skew(20deg);          /* Tircha karne ke liye */
+}
+
+/* ==========================================
+    PERSPECTIVE (3D Look dene ke liye)
+   ========================================== */
+.container-3d {
+    perspective: 500px; /* Isse depth (gehrayi) mehsoos hoti hai */
+}
+
+.box-3d {
+    transform: rotateY(45deg); /* 3D mein ghumana */
+}
