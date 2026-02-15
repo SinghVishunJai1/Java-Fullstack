@@ -1,0 +1,61 @@
+==========================================================================
+          GITHUB & GIT MASTER NOTES - COMPLETE REFERENCE
+==========================================================================
+Author: Jai Vishun Singh
+Topic: Git (Local Time Machine) & GitHub (Cloud Backup)
+==========================================================================
+
+1. BASIC CONCEPT (Simple Bhasha Mein)
+--------------------------------------
+- Git: Aapke computer ka "Save Button". Ye har badlav ka snapshot leta hai.
+- GitHub: Ek online website jahan aap apna "Git record" upload karte ho taaki 
+  duniya dekh sake aur aapka code safe rahe.
+
+2. GIT WORKFLOW (3 STAGES)
+--------------------------
+Har file in teen stages se guzarti hai:
+1. Working Directory: Jahan aap code likh rahe ho (Unsaved).
+2. Staging Area: Basket jahan aap files ko "save karne ke liye" chunte ho.
+3. Local Repo: Jahan snapshot permanent save ho jata hai.
+
+3. ESSENTIAL COMMANDS (Setup & Daily Use)
+------------------------------------------
+# Setup (Sirf ek baar)
+git init                       -> Folder ko Git banana.
+git remote add origin <URL>    -> Local folder ko GitHub se jorna.
+git config --global user.name  -> Apna naam batana.
+
+# Daily Routine (Add -> Commit -> Push)
+git status                     -> Check karna ki kya badla hai.
+git add .                      -> Saari files ko basket (staging) mein daalna.
+git commit -m "Message"        -> Snapshot ko ek naam dekar save karna.
+git push origin main           -> Local kaam ko GitHub par upload karna.
+
+4. UNDERSTANDING "ORIGIN" & "MAIN"
+-----------------------------------
+- origin: Ye aapke GitHub repo ke lambe URL ka nickname hai.
+- main: Ye aapke project ka sabse bada aur asli rasta (branch) hai.
+
+5. BRANCHING (Experiment Karne Ke Liye)
+----------------------------------------
+Branching ka matlab hai asli code ko chede bina naya feature banana.
+- git branch <name>            -> Naya rasta banana.
+- git checkout <name>          -> Us naye raste par jana.
+- git merge <name>             -> Naya kaam asli code (main) mein jorna.
+
+6. RECOVERY & UNDO (Galti Sudharna)
+------------------------------------
+- git log --oneline            -> Purane saare save points dekhna.
+- git checkout -- <file>       -> File ko last save point jaisa kar dena.
+- git pull                     -> GitHub se naya code download karna.
+
+7. GITHUB TERMINOLOGY
+----------------------
+- Repository (Repo): Aapka online project folder.
+- README.md: Project ki "Introduction" file.
+- Clone: Kisi aur ka project download karna (git clone <url>).
+- Fork: Dusre ke project ki copy apne GitHub account mein banana.
+
+==========================================================================
+PRO TIP: Hamesha 'git status' ka use karein har step se pehle!
+==========================================================================
